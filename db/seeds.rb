@@ -7,3 +7,17 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+puts 'Cleaning the database...'
+
+Restaurant.destroy_all
+
+puts 'Creating restaurants....'
+
+Restaurant.create!(name: Faker::Restaurant.name, address: Faker::Address.street_name, category: 'chinese', phone_number: Faker::PhoneNumber.phone_number)
+Restaurant.create!(name: Faker::Restaurant.name, address: Faker::Address.street_name, category: 'japanese', phone_number: Faker::PhoneNumber.phone_number)
+Restaurant.create!(name: Faker::Restaurant.name, address: Faker::Address.street_name, category: 'french', phone_number: Faker::PhoneNumber.phone_number)
+Restaurant.create!(name: Faker::Restaurant.name, address: Faker::Address.street_name, category: 'italian', phone_number: Faker::PhoneNumber.phone_number)
+Restaurant.create!(name: Faker::Restaurant.name, address: Faker::Address.street_name, category: 'belgian', phone_number: Faker::PhoneNumber.phone_number)
+
+puts 'Restaurants created!'
