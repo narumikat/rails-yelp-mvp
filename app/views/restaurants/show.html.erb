@@ -1,0 +1,65 @@
+<div class="container my-4">
+  <div class="my-4">
+    <h1 class="text-center">Restaurant name: <%= @restaurant.name %></h1>
+  </div>
+  <div class="d-flex justify-content-center">
+    <div class="col-8">
+      <div class="d-flex justify-content-between">
+        <h2 class="my-2">Category: <%= @restaurant.category %></h2>
+        <h2 class="">Phone number: <%= @restaurant.phone_number %></h2>
+      </div>
+      <div class="d-flex my-2">
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-regular fa-star"></i>
+      </div>
+      <h2 class="mt-4 pt-4">Reviews:</h2>
+      <% @restaurant.reviews.each do |review| %>
+        <div class="review border">
+          <h3>Rating: <span><%= review.rating %></span></h3>
+          <p><%= review.content %></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="d-flex justify-content-between mt-4">
+    <%= link_to 'Back', root_path, class: "btn btn-secondary mt-4"%>
+    <%= link_to 'Write a Review', new_restaurant_review_path(@restaurant), class: "btn btn-primary mt-4"%>
+  </div>
+</div>
+<style>
+  h1 {
+    background: rgba(32, 201, 151, 0.3);
+    padding: 1rem;
+    border-radius: 8px;
+    border: 5px solid rgba(32, 201, 151, 0.5);
+    font-size: 2rem;
+  }
+
+  h2 {
+    color: #6c757d;
+    font-size: 1.5rem;
+  }
+
+  h3 {
+    color: #6c757d;
+    font-size: 1.2rem;
+  }
+
+  i {
+    font-size: 1.5rem;
+    color: #ffcd39;
+  }
+
+  span {
+    font-weight: bold;
+  }
+
+  .review {
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 5px 20px;
+  }
+</style>

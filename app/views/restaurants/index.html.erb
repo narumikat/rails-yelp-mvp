@@ -1,5 +1,5 @@
-<div class="container">
-  <h1 class="text-center my-4">Restaurant</h1>
+<div class="container my-4">
+  <h1 class="text-center m-4">Restaurant</h1>
   <div class="d-flex justify-content-center">
     <div class="row justify-content-center">
       <% @restaurants.each do |restaurant|%>
@@ -10,7 +10,7 @@
             <p class="card-text">Phone number: <%= restaurant.phone_number %></p>
             <div class="d-flex justify-content-between">
               <%= link_to 'See details', restaurant_path(restaurant), class: 'btn btn-primary' %>
-              <%= link_to 'See reviews', new_restaurant_review_path(restaurant), class: 'btn btn-secondary' %>
+              <%= link_to 'Write a Review', new_restaurant_review_path(restaurant), class: 'btn btn-secondary' %>
             </div>
           </div>
         </div>

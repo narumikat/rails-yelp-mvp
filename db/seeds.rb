@@ -11,13 +11,33 @@
 puts 'Cleaning the database...'
 
 Restaurant.destroy_all
+Review.destroy_all
 
 puts 'Creating restaurants....'
 
-Restaurant.create!(name: Faker::Restaurant.name, address: Faker::Address.street_name, category: 'chinese', phone_number: Faker::PhoneNumber.phone_number)
-Restaurant.create!(name: Faker::Restaurant.name, address: Faker::Address.street_name, category: 'japanese', phone_number: Faker::PhoneNumber.phone_number)
-Restaurant.create!(name: Faker::Restaurant.name, address: Faker::Address.street_name, category: 'french', phone_number: Faker::PhoneNumber.phone_number)
-Restaurant.create!(name: Faker::Restaurant.name, address: Faker::Address.street_name, category: 'italian', phone_number: Faker::PhoneNumber.phone_number)
-Restaurant.create!(name: Faker::Restaurant.name, address: Faker::Address.street_name, category: 'belgian', phone_number: Faker::PhoneNumber.phone_number)
+restaurants = []
+
+20.times do |i|
+  restaurants << Restaurant.create!(
+    name: Faker::Restaurant.name,
+    address: Faker::Address.street_name,
+    category: %w[chinese japanese french italian belgian].sample,
+    phone_number: Faker::PhoneNumber.phone_number
+  )
+end
 
 puts 'Restaurants created!'
+
+puts 'Creating reviews...'
+
+restaurants.each do |restaurant|
+  10.times do
+    Review.create!(
+      content: Faker::Lorem.sentence(word_count: 17),
+      rating: rand(0..5),
+      restaurant: restaurant
+    )
+  end
+end
+
+puts 'Reviews created!'

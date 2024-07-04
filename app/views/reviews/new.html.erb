@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="d-flex justify-content-center">
+    <div class="col-8">
+      <div class="mt-4">
+        <h2>Write a review for: <%= @restaurant.name %></h2>
+        <h3 class="mb-4">Category: <%= @restaurant.category %></h3>
+        <%= simple_form_for([@restaurant, @review]) do |f| %>
+          <%= f.input :content, class: "form-control" %>
+          <%= f.input :rating, class: "form-control" %>
+          <div class="d-flex justify-content-between">
+            <%= f.submit class: "btn btn-primary" %>
+            <%= link_to 'Back to Restaurant', restaurant_path(@restaurant), class: "btn btn-secondary" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  h3 {
+    color: #6c757d;
+    font-size: 1.2rem;
+  }
+</style>
