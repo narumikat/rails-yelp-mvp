@@ -7,6 +7,7 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.new
   end
 
+
   def create
     @restaurant = Restaurant.new(restaurant_params)
     if @restaurant.save
@@ -19,6 +20,7 @@ class RestaurantsController < ApplicationController
   def show
     @restaurant = Restaurant.find(params[:id])
     @reviews = @restaurant.reviews
+    @review = @restaurant.reviews.new
   end
 
   private
@@ -26,4 +28,5 @@ class RestaurantsController < ApplicationController
   def restaurant_params
     params.require(:restaurant).permit(:name, :address, :phone_number, :category)
   end
+
 end
